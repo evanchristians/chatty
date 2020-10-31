@@ -32,8 +32,6 @@ const JoinForm = () => {
         }}
         validationSchema={joinSchema}
         onSubmit={(values) => {
-          console.log({ ...values });
-
           router.push({
             pathname: "/chat/[room]/[name]",
             query: { ...values },

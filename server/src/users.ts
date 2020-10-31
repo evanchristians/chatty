@@ -7,8 +7,8 @@ type User = {
 const users: User[] = [];
 
 export const addUser = ({ id, name, room }: User) => {
-  name = name.trim().toLowerCase();
-  room = room.trim().toLowerCase();
+  name = name?.trim().toLowerCase();
+  room = room?.trim().toLowerCase();
 
   const existingUser = users.find(
     (user) => user.room === room && user.name === name
@@ -32,7 +32,12 @@ export const removeUser = (id: string) => {
   return { error: "User not Found" };
 };
 
-export const getUser = (id: string) => users.find((user) => user.id === id);
+export const getUser = (id: string) => {
+  console.log(id)
+  return users.find((user) => {
+    return user.id === id;
+  });
+};
 
 export const getUsersInRoom = (room: string) =>
   users.filter((user) => user.room === room);
